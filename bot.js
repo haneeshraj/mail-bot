@@ -126,8 +126,6 @@ client.on("messageCreate", async (message) => {
             message.client.channels.cache.get(announceChannel);
           sendAnnouncement.send({ embeds: [announceEmbed] });
         }
-      } else {
-        console.log("man wants to be a haccer");
       }
     }
   }
