@@ -36,6 +36,29 @@ client.on("messageCreate", async (message) => {
         message.member.permissions.has(PermissionFlagsBits.ManageChannels) ||
         message.member.permissions.has(PermissionFlagsBits.Administrator)
       ) {
+        if (args[0] === "help") {
+          const setEmbed = new EmbedBuilder()
+            .setColor("Fuchsia")
+            .setThumbnail(message.guild.iconURL())
+            .setTitle("Announcement help")
+            .setDescription(
+              "The announce command lets you send announcement mesages to a server channel as well as DMs to people whoever has been assigned the announce role"
+            )
+            .setFields(
+              { name: "help", value: "```>announce help```" },
+              { name: "role", value: "```>announce role @[RoleName]```" },
+              {
+                name: "channel",
+                value: "```>announce channel #[channel-name]```",
+              },
+              {
+                name: "broadcast",
+                value: "```>announce broadcast title: [Title] desc: [desc]```",
+              }
+            );
+          return await message.channel.send({ embeds: [setEmbed] });
+        }
+
         if (args[0] === "channel") {
           announceChannel = args[1].slice(2, args[1].length - 1);
 
